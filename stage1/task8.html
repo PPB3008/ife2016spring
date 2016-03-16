@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>第一阶段任务八</title>
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            width: 100%;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+        }
+        .container:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        [class*='row'] {
+            margin: -10px;
+        }
+        [class*='col-'] {
+            float: left;
+            padding: 10px;
+        }
+        .content {
+            border: 1px solid #999999;
+            height: 50px;
+            background-color: #EEEEEE;
+        }
+        @media (min-width: 769px) {
+            .col-md-1{
+                width: 8.33%;
+            }
+            .col-md-2{
+                width: 16.66%;
+            }
+            .col-md-3{
+                width: 25%;
+            }
+            .col-md-4{
+                width: 33.33%;
+            }
+            .col-md-6{
+                width: 50%;
+            }
+        }
+        @media (max-width: 768px) {
+            .col-sm-2 {
+                width: 16.66%;
+            }
+            .col-sm-3 {
+                width: 25%;
+            }
+            .col-sm-6 {
+                width: 50%;
+            }
+            .col-sm-8 {
+                width: 66.66%;
+            }
+            .col-sm-12 {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row1">
+            <div class="col-md-4 col-sm-6">
+                <div class="content"></div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="content"></div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="content"></div>
+            </div>
+        </div>
+        <div class="row2">
+            <div class="col-md-3 col-sm-3">
+                <div class="content"></div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="content"></div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <div class="content"></div>
+            </div>
+        </div>
+        <div class="row3">
+            <div class="col-md-1 col-sm-2">
+                <div class="content"></div>
+            </div>
+            <div class="col-md-1 col-sm-2">
+                <div class="content"></div>
+            </div>
+            <div class="col-md-2 col-sm-8">
+                <div class="content"></div>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <div class="content"></div>
+            </div>
+            <div class="col-md-6 col-sm-3">
+                <div class="content"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
