@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>第一阶段任务十</title>
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        .parent {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            height: 400px;
+        }
+        .child {
+            border: 1px solid #FF0000;
+            width: 150px;
+        }
+        .first {
+            height: 120px;
+        }
+        .second {
+            height: 100px;
+        }
+        .third {
+            height: 40px;
+        }
+        .forth {
+            border: 1px solid #00FF00;
+            height: 200px;
+        }
+        @media (max-width: 640px) {
+            .parent {
+                align-items: flex-start;
+            }
+            .child {
+                order: 2;
+            }
+            .forth {
+                order: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="first child"></div>
+        <div class="second child"></div>
+        <div class="third child"></div>
+        <div class="forth child"></div>
+    </div>
+</body>
+</html>
