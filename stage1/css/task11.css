@@ -68,6 +68,8 @@ nav>ul>li {
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
+    -webkit-flex-flow: row nowrap;
+    -webkit-justify-content: space-around;
     flex-flow: row nowrap;
     justify-content: space-around;
 }
@@ -103,6 +105,9 @@ nav>ul>li {
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
+    -webkit-flex-flow: row nowrap;
+    -webkit-justify-content: space-around;
+    -webkit-align-items: flex-end;
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: flex-end;
@@ -145,6 +150,9 @@ nav>ul>li {
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
+    -webkit-flex-flow: row nowrap;
+    -webkit-justify-content: space-between;
+    -webkit-align-items: center;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
