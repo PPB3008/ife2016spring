@@ -107,10 +107,10 @@ nav>ul>li {
     display: -webkit-flex;
     display: flex;
     -webkit-flex-flow: row nowrap;
-    -webkit-justify-content: space-between;
+    -webkit-justify-content: center;
     -webkit-align-items: flex-end;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-end;
     margin: 0 auto;
     width: 90%;
