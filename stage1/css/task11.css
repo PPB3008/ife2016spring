@@ -65,7 +65,7 @@ nav>ul>li {
     width: 100%;
 }
 .banner>ul {
-    display: -moz-flex;
+    display: -webkit-box;
     display: -webkit-flex;
     display: flex;
     flex-flow: row nowrap;
@@ -100,7 +100,7 @@ nav>ul>li {
 }
 .asides {
     border-top: 2px solid #DFDFDF;
-    display: -moz-flex;
+    display: -webkit-box;
     display: -webkit-flex;
     display: flex;
     flex-flow: row nowrap;
@@ -142,7 +142,7 @@ nav>ul>li {
     color: #5B5B5B;
 }
 .content {
-    display: -moz-flex;
+    display: -webkit-box;
     display: -webkit-flex;
     display: flex;
     flex-flow: row nowrap;
