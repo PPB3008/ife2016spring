@@ -115,9 +115,8 @@ nav>ul>li {
     width: 90%;
 }
 .asides>aside {
-    display: inline-block;
+    flex: 1;
     margin: 20px 0;
-    width: 33.3%;
 }
 .asides>aside:not(:last-child) {
     border-right: 2px solid #DFDFDF;
