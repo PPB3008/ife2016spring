@@ -14,8 +14,8 @@
 })();
 
 function leftIn() {
-    var queue = document.querySelector("ul"),
-        input = document.querySelector("input"),
+    var queue  = document.querySelector("ul"),
+        input  = document.querySelector("input"),
         newEle = document.createElement("li"),
         oldEle = queue.querySelectorAll("li")[0];
 
@@ -29,15 +29,15 @@ function leftIn() {
 
 function rightIn() {
     var newEle = document.createElement("li"),
-        queue = document.querySelector("ul"),
-        input = document.querySelector("input");
+        queue  = document.querySelector("ul"),
+        input  = document.querySelector("input");
 
     newEle.innerHTML = input.value.replace(/\D/g, "");
     queue.appendChild(newEle);
 };
 
 function leftOut() {
-    var queue = document.querySelector("ul"),
+    var queue  = document.querySelector("ul"),
         oldEle = queue.querySelectorAll("li")[0];
 
     if(!oldEle) {
@@ -49,7 +49,7 @@ function leftOut() {
 };
 
 function rightOut() {
-    var queue = document.querySelector("ul"),
+    var queue  = document.querySelector("ul"),
         oldEle = queue.lastChild;
 
     if(!oldEle) {
@@ -62,7 +62,7 @@ function rightOut() {
 
 function deleteEle(event) {
     var oldEle = getTarget(event),
-        queue = document.querySelector("ul");
+        queue  = document.querySelector("ul");
 
     if(oldEle.tagName == "LI") {
         queue.removeChild(oldEle);
