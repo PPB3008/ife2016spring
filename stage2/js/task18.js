@@ -89,16 +89,3 @@ function getTarget(event) {
     event = event || window.event;
     return event.target || event.srcElement;
 };
-
-/**
- * remove handler of element
- */
-function removeHandler(element, type, handler) {
-    if(element.removeEventListener) {
-        element.removeEventListener(type, handler);
-    } else if (element.detachEvent) {
-        element.detachEvent("on"+type, handler);
-    } else {
-        element["on"+type] = null;
-    }
-}
