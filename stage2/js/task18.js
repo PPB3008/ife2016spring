@@ -14,12 +14,12 @@
 })();
 
 function leftIn() {
-    var queue = document.querySelector("ul"),
-        input = document.querySelector("input"),
+    var queue  = document.querySelector("ul"),
+        input  = document.querySelector("input"),
         newEle = document.createElement("li"),
         oldEle = queue.querySelectorAll("li")[0];
 
-    newEle.innerHTML = input.value.replace(/\D/g, "");
+    newEle.innerHTML = input.value.replace(/\D/g, "") || 0;
     if(!oldEle) {
         queue.appendChild(newEle);
     } else {
@@ -29,15 +29,15 @@ function leftIn() {
 
 function rightIn() {
     var newEle = document.createElement("li"),
-        queue = document.querySelector("ul"),
-        input = document.querySelector("input");
+        queue  = document.querySelector("ul"),
+        input  = document.querySelector("input");
 
-    newEle.innerHTML = input.value.replace(/\D/g, "");
+    newEle.innerHTML = input.value.replace(/\D/g, "") || 0;
     queue.appendChild(newEle);
 };
 
 function leftOut() {
-    var queue = document.querySelector("ul"),
+    var queue  = document.querySelector("ul"),
         oldEle = queue.querySelectorAll("li")[0];
 
     if(!oldEle) {
@@ -49,7 +49,7 @@ function leftOut() {
 };
 
 function rightOut() {
-    var queue = document.querySelector("ul"),
+    var queue  = document.querySelector("ul"),
         oldEle = queue.lastChild;
 
     if(!oldEle) {
@@ -62,7 +62,7 @@ function rightOut() {
 
 function deleteEle(event) {
     var oldEle = getTarget(event),
-        queue = document.querySelector("ul");
+        queue  = document.querySelector("ul");
 
     if(oldEle.tagName == "LI") {
         queue.removeChild(oldEle);
@@ -89,16 +89,3 @@ function getTarget(event) {
     event = event || window.event;
     return event.target || event.srcElement;
 };
-
-/**
- * remove handler of element
- */
-function removeHandler(element, type, handler) {
-    if(element.removeEventListener) {
-        element.removeEventListener(type, handler);
-    } else if (element.detachEvent) {
-        element.detachEvent("on"+type, handler);
-    } else {
-        element["on"+type] = null;
-    }
-}
