@@ -19,7 +19,7 @@ function leftIn() {
         newEle = document.createElement("li"),
         oldEle = queue.querySelectorAll("li")[0];
 
-    newEle.innerHTML = input.value.replace(/\D/g, "");
+    newEle.innerHTML = input.value.replace(/\D/g, "") || 0;
     if(!oldEle) {
         queue.appendChild(newEle);
     } else {
@@ -32,7 +32,7 @@ function rightIn() {
         queue  = document.querySelector("ul"),
         input  = document.querySelector("input");
 
-    newEle.innerHTML = input.value.replace(/\D/g, "");
+    newEle.innerHTML = input.value.replace(/\D/g, "") || 0;
     queue.appendChild(newEle);
 };
 
