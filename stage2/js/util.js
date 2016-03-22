@@ -3,12 +3,19 @@
  */
 function addHandler(element, type, handler) {
     if(element.addEventListener) {
-        element.addEventListener(type, handler, false);
+        addHandler = function(element, type, handler) {
+            element.addEventListener(type, handler, false);
+        };
     } else if (element.attachEvent) {
-        element.attachEvent("on"+type, handler);
+        addHandler = function(element, type, handler) {
+            element.attachEvent("on"+type, handler);
+        };
     } else {
-        element["on"+type] = handler;
+        addHandler = function(element, type, handler) {
+            element["on"+type] = handler;
+        };
     }
+    return addHandler(element, type, handler);
 };
 
 /**
