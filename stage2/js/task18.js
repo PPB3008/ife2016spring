@@ -15,6 +15,14 @@
     init(queue, lin);
 })();
 
+function init(queue, lin) {
+    var randHeight, i, input = document.querySelector("input");
+    for(var i = 0; i < 10; i++) {
+        input.value = Math.floor(Math.random() * 90) + 10;
+        lin.click();
+    }
+}
+
 function leftIn() {
     var queue  = document.querySelector("ul"),
         input  = document.querySelector("input"),
@@ -74,5 +82,28 @@ function deleteEle(event) {
 
     if(lastEle.tagName == "LI") {
         queue.removeChild(lastEle);
+<<<<<<< HEAD
+=======
     }
+};
+
+/**
+ * add handler to element
+ */
+function addHandler(element, type, handler) {
+    if(element.addEventListener) {
+        addHandler = function(element, type, handler) {
+            element.addEventListener(type, handler, false);
+        }
+    } else if (element.attachEvent) {
+        addHandler = function(element, type, handler) {
+            element.attachEvent("on"+type, handler);
+        }
+    } else {
+        addHandler = function(element, type, handler) {
+            element["on"+type] = handler;
+        }
+>>>>>>> df17c22a0b8d3e70b7c4986192862fbbfa393503
+    }
+    return addHandler(element, type, handler);
 };
