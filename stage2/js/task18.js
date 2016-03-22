@@ -29,7 +29,7 @@ function leftIn() {
         newEle = document.createElement("li"),
         lastEle = queue.querySelectorAll("li")[0];
 
-    newEle.innerHTML = input.value.replace(/\D/g, "");
+    newEle.innerHTML = parseInt(input.value, 10) || "";
     if(newEle.innerHTML == "") {
         input.value = "请输入数字";
     } else if(!lastEle) {
@@ -44,7 +44,7 @@ function rightIn() {
         queue  = document.querySelector("ul"),
         input  = document.querySelector("input");
 
-    newEle.innerHTML = input.value.replace(/\D/g, "");
+    newEle.innerHTML = parseInt(input.value, 10) || "";
     if(newEle.innerHTML == "") {
         input.value = "请输入数字";
     } else {
