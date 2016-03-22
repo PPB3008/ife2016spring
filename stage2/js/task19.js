@@ -1,19 +1,27 @@
 (function() {
-    var btns  = document.querySelectorAll("button"),
-        lin   = btns[0],
-        rin   = btns[1],
-        lout  = btns[2],
-        rout  = btns[3],
-        bubbleBtn = btns[4],
-        queue = document.querySelector("ul");
+    var btns         = document.querySelectorAll("button"),
+        lin          = btns[0],
+        rin          = btns[1],
+        lout         = btns[2],
+        rout         = btns[3],
+        messBtn      = btns[4],
+        bubbleBtn    = btns[5],
+        selectionBtn = btns[6],
+        queue        = document.querySelector("ul");
 
     addHandler(lin, "click", leftIn);
     addHandler(rin, "click", rightIn);
     addHandler(lout, "click", leftOut);
     addHandler(rout, "click", rightOut);
     addHandler(queue, "click", deleteEle);
+    addHandler(messBtn, "click", function() {
+        init(queue, lin);
+    });
     addHandler(bubbleBtn, "click", function() {
         bubbleSort(queue);
+    });
+    addHandler(selectionBtn, "click", function() {
+        slectionSort(queue);
     });
 
     init(queue, lin);
@@ -134,8 +142,8 @@ function swap(ele1, ele2) {
 };
 
 function bubbleSort(queue) {
-    var eles = queue.getElementsByTagName("li"),
-        len = eles.length, i, j = 0, delay = 50, timer;
+    var eles = queue.querySelectorAll("li"),
+        len  = eles.length, i, j = 0, delay = 50, timer;
 
     i = len - 1;
     timer = setInterval(function() {
@@ -149,6 +157,27 @@ function bubbleSort(queue) {
         if (eles[j].offsetHeight > eles[j+1].offsetHeight) {
             swap(eles[j], eles[j+1]);
         }
-        j++;
+        ++j;
+    }, delay);
+};
+
+function slectionSort(queue) {
+    var eles = queue.querySelectorAll("li"),
+        len  = eles.length, i = 0, j = 1, min = 0, delay = 50, timer;
+
+    timer = setInterval(function() {
+        if(i == len - 1) {
+            clearInterval(timer);
+        }
+        if(j == len) {
+            swap(eles[i], eles[min]);
+            ++i;
+            min = i;
+            j = i + 1;
+        }
+        if(eles[j] && eles[j].offsetHeight < eles[min].offsetHeight) {
+            min = j;
+        }
+        ++j;
     }, delay);
 };
