@@ -19,14 +19,6 @@
     init(queue, lin);
 })();
 
-function init(queue, lin) {
-    var randHeight, i, input = document.querySelector("input");
-    for(var i = 0; i < 50; i++) {
-        input.value = Math.floor(Math.random() * 90) + 10;
-        lin.click();
-    }
-}
-
 function leftIn() {
     var queue  = document.querySelector("ul"),
         input  = document.querySelector("input"),
@@ -98,27 +90,6 @@ function deleteEle(event) {
 };
 
 /**
- * add handler to element
- */
-function addHandler(element, type, handler) {
-    if(element.addEventListener) {
-        element.addEventListener(type, handler, false);
-    } else if (element.attachEvent) {
-        element.attachEvent("on"+type, handler);
-    } else {
-        element["on"+type] = handler;
-    }
-};
-
-/**
- * get target from event
- */
-function getTarget(event) {
-    event = event || window.event;
-    return event.target || event.srcElement;
-};
-
-/**
  * the number of elements in queue
  */
 function queueLength(queue) {
@@ -134,6 +105,17 @@ function transValue(input) {
     }
     return result;
 };
+
+function paint(queue) {
+    var eles = queue.querySelectorAll("li"),
+        html = "";
+
+    queue.innerHTML = "";
+    for(var i = 0; i < eles.length; i++) {
+        html += '<li style="height:' + eles[i].style.height + '">' + '</li>';
+    }
+    queue.innerHTML = html;
+}
 
 function swap(ele1, ele2) {
     var temp = ele1.offsetHeight;
@@ -153,13 +135,20 @@ function swap(ele1, ele2) {
 
 function bubbleSort(queue) {
     var eles = queue.getElementsByTagName("li"),
-        len = eles.length, i, j = 0, delay = 100;
+        len = eles.length, i, j = 0, delay = 50, timer;
 
-    for(i = len-1; i >=1; --i) {
-        for(j = 0; j < i; ++j) {
-            if(eles[j].offsetHeight > eles[j+1].offsetHeight) {
-                swap(eles[j], eles[j+1]);
-            }
+    i = len - 1;
+    timer = setInterval(function() {
+        if(i < 1) {
+            clearInterval(timer);
         }
-    }
+        if(j == i) {
+            --i;
+            j = 0;
+        }
+        if (eles[j].offsetHeight > eles[j+1].offsetHeight) {
+            swap(eles[j], eles[j+1]);
+        }
+        j++;
+    }, delay);
 };

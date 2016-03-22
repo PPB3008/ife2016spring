@@ -11,19 +11,23 @@
     addHandler(lout, "click", leftOut);
     addHandler(rout, "click", rightOut);
     addHandler(queue, "click", deleteEle);
+
+    init(queue, lin);
 })();
 
 function leftIn() {
     var queue  = document.querySelector("ul"),
         input  = document.querySelector("input"),
         newEle = document.createElement("li"),
-        oldEle = queue.querySelectorAll("li")[0];
+        lastEle = queue.querySelectorAll("li")[0];
 
-    newEle.innerHTML = input.value.replace(/\D/g, "") || 0;
-    if(!oldEle) {
+    newEle.innerHTML = input.value.replace(/\D/g, "");
+    if(newEle.innerHTML == "") {
+        input.value = "请输入数字";
+    } else if(!lastEle) {
         queue.appendChild(newEle);
     } else {
-        queue.insertBefore(newEle, oldEle);
+        queue.insertBefore(newEle, lastEle);
     }
 };
 
@@ -32,60 +36,43 @@ function rightIn() {
         queue  = document.querySelector("ul"),
         input  = document.querySelector("input");
 
-    newEle.innerHTML = input.value.replace(/\D/g, "") || 0;
-    queue.appendChild(newEle);
+    newEle.innerHTML = input.value.replace(/\D/g, "");
+    if(newEle.innerHTML == "") {
+        input.value = "请输入数字";
+    } else {
+        queue.appendChild(newEle);
+    }
 };
 
 function leftOut() {
     var queue  = document.querySelector("ul"),
-        oldEle = queue.querySelectorAll("li")[0];
+        lastEle = queue.querySelectorAll("li")[0];
 
-    if(!oldEle) {
+    if(!lastEle) {
         alert("队列空了");
     } else {
-        alert(oldEle.innerHTML);
-        queue.removeChild(oldEle);
+        alert(lastEle.innerHTML);
+        queue.removeChild(lastEle);
     }
 };
 
 function rightOut() {
     var queue  = document.querySelector("ul"),
-        oldEle = queue.lastChild;
+        lastEle = queue.lastElementChild;
 
-    if(!oldEle) {
+    if(!lastEle) {
         alert("队列空了");
     } else {
-        alert(oldEle.innerHTML);
-        queue.removeChild(oldEle);
+        alert(lastEle.innerHTML);
+        queue.removeChild(lastEle);
     }
 };
 
 function deleteEle(event) {
-    var oldEle = getTarget(event),
+    var lastEle = getTarget(event),
         queue  = document.querySelector("ul");
 
-    if(oldEle.tagName == "LI") {
-        queue.removeChild(oldEle);
+    if(lastEle.tagName == "LI") {
+        queue.removeChild(lastEle);
     }
-};
-
-/**
- * add handler to element
- */
-function addHandler(element, type, handler) {
-    if(element.addEventListener) {
-        element.addEventListener(type, handler, false);
-    } else if (element.attachEvent) {
-        element.attachEvent("on"+type, handler);
-    } else {
-        element["on"+type] = handler;
-    }
-};
-
-/**
- * get target from event
- */
-function getTarget(event) {
-    event = event || window.event;
-    return event.target || event.srcElement;
 };
