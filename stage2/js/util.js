@@ -21,6 +21,7 @@ function getTarget(event) {
 
 function init(queue, lin) {
     var randHeight, i, input = document.querySelector("input");
+    queue.innerHTML = "";
     for(var i = 0; i < 10; i++) {
         input.value = Math.floor(Math.random() * 90) + 10;
         lin.click();
