@@ -11,6 +11,13 @@ li {
     background-color: #E21519;
     color: #FFFFFF;
     text-align: center;
-    font-size: "SimHei";
+    font-family: "SimHei";
     list-style-type: none;
+}
+/* for task 20 */
+li {
+    padding: 14px;
+    height: 100px;
+    width: 100px;
+    font-size: 12px;
 }
