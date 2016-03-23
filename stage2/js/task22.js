@@ -53,18 +53,23 @@ function TreeWalker() {
     this.animation = function() {
         var stack   = this.stack,
             speeder = document.querySelector("#speeder"),
-            iter    = 0, timer;
-        this.stack = [];
-        stack[iter].style.backgroundColor = "#F125C2";
-        timer = setInterval(function() {
-            if(iter == stack.length-1) {
-                stack[iter].style.backgroundColor = "#FFFFFF";
-                clearInterval(timer);
-            } else {
-                ++iter;
-                stack[iter-1].style.backgroundColor = "#FFFFFF";
-                stack[iter].style.backgroundColor = "#F125C2";
-            }
-        }, speeder.value);
+            iter    = 0, timer, _self = this;
+
+        _self.stack = [];
+        if(!_self.isWalking) {
+            _self.isWalking = true;
+            stack[iter].style.backgroundColor = "#F125C2";
+            timer = setInterval(function() {
+                if(iter == stack.length-1) {
+                    stack[iter].style.backgroundColor = "#FFFFFF";
+                    _self.isWalking = false;
+                    clearInterval(timer);
+                } else {
+                    ++iter;
+                    stack[iter-1].style.backgroundColor = "#FFFFFF";
+                    stack[iter].style.backgroundColor = "#F125C2";
+                }
+            }, speeder.value);
+        }
     };
 };
