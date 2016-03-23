@@ -7,6 +7,7 @@
         messBtn      = btns[4],
         bubbleBtn    = btns[5],
         selectionBtn = btns[6],
+        insertionBtn    = btns[7],
         queue        = document.querySelector("ul");
 
     addHandler(lin, "click", leftIn);
@@ -22,6 +23,9 @@
     });
     addHandler(selectionBtn, "click", function() {
         slectionSort(queue);
+    });
+    addHandler(insertionBtn, "click", function() {
+        insertionSort(queue);
     });
 
     init(queue, lin);
@@ -114,17 +118,6 @@ function transValue(input) {
     return result;
 };
 
-function paint(queue) {
-    var eles = queue.querySelectorAll("li"),
-        html = "";
-
-    queue.innerHTML = "";
-    for(var i = 0; i < eles.length; i++) {
-        html += '<li style="height:' + eles[i].style.height + '">' + '</li>';
-    }
-    queue.innerHTML = html;
-}
-
 function swap(ele1, ele2) {
     var temp = ele1.offsetHeight;
 
@@ -179,5 +172,44 @@ function slectionSort(queue) {
             min = j;
         }
         ++j;
+    }, delay);
+};
+
+/**
+ * 用两个变量控制内外循环
+ */
+function insertionSort(queue) {
+    var eles = queue.querySelectorAll("li"),
+        len  = eles.length,
+        temp, i = 1, j = 0, timer, delay = 100, outer = true, inner = false;
+
+    timer = setInterval(function() {
+        if(outer) {
+            if(i == len) {
+                clearInterval(timer);
+                return ;
+            }
+            if(eles[i].offsetHeight < eles[i-1].offsetHeight) {
+                temp = eles[i].offsetHeight;
+                j = i - 1;
+                outer = false;
+                inner = true;
+            } else {
+                i++;
+            }
+        }
+        if(inner) {
+            if(j < 0 || eles[j].offsetHeight < temp) {
+                eles[j+1].style.height = temp + "px";
+                eles[j+1].offsetHeight = temp;
+                i++;
+                inner = false;
+                outer = true;
+            } else {
+                eles[j+1].style.height = eles[j].style.height;
+                eles[j+1].offsetHeight = eles[j].offsetHeight;
+                j--;
+            }
+        }
     }, delay);
 };
