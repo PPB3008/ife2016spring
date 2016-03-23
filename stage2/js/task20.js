@@ -42,7 +42,7 @@ function rightIn() {
         input    = document.querySelector("#inputEle"),
         inputArr = input.value.split(/\n+|\r+|\t+|\s+|,+|，+|、+/g);
 
-    for(var i = 0, len = inputArr.length; i < len; i++) {console.log(i)
+    for(var i = 0, len = inputArr.length; i < len; i++) {
         newEle.innerHTML = inputArr[i].replace(/!(\d|\w)/g, "");
         if(newEle.innerHTML == "") {
             input.value = "请输入数字";
