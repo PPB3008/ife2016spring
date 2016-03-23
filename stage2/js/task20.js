@@ -80,6 +80,10 @@ function rightOut() {
 function searchWord() {
     var eles    = document.querySelectorAll("li"),
         keyword = new RegExp(document.querySelector("#keyword").value);
+        
+    if(!document.querySelector("#keyword").value) {
+        return false;
+    }
 
     for(var i = 0, len = eles.length; i < len; i++) {
         eles[i].style.color = "#FFFFFF";
@@ -87,7 +91,7 @@ function searchWord() {
             eles[i].style.color = "#000000";
         }
     }
-}
+};
 
 function deleteEle(event) {
     var lastEle = getTarget(event),
