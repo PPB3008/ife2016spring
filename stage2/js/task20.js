@@ -20,7 +20,7 @@ function leftIn() {
         input    = document.querySelector("#inputEle"),
         newEle   = document.createElement("li"),
         lastEle  = queue.querySelectorAll("li")[0],
-        inputArr = input.value.split(/\n+|\r+|\t+|\s+|,+|，+|、+/g);
+        inputArr = input.value.split(/[\n\r\t\s,，、;；]+/g);
 
     for(var i = 0, len = inputArr.length; i < len; i++) {
         newEle.innerHTML = inputArr[i].replace(/!(\d|\w)/g, "");
@@ -40,7 +40,7 @@ function rightIn() {
     var newEle   = document.createElement("li"),
         queue    = document.querySelector("ul"),
         input    = document.querySelector("#inputEle"),
-        inputArr = input.value.split(/\n+|\r+|\t+|\s+|,+|，+|、+/g);
+        inputArr = input.value.split(/[\n\r\t\s,，、;；]+/g);
 
     for(var i = 0, len = inputArr.length; i < len; i++) {
         newEle.innerHTML = inputArr[i].replace(/!(\d|\w)/g, "");
