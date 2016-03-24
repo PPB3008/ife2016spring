@@ -72,17 +72,18 @@ function TreeWalker() {
             iter    = 0, timer, _self = this;
 
         _self.stack = [];
+        _self.found = false;
         if(!_self.isWalking) {
             _self.isWalking = true;
             stack[iter].style.backgroundColor = "#02FE0C";
             timer = setInterval(function() {
                 if(iter == stack.length-1) {
                     stack[iter].style.backgroundColor = "#FFFFFF";
-                    _self.isWalking = false;
-                    _self.isFinding = false;
-                    if(!this.found) {
+                    if(_self.isFinding && !_self.found) {
                         alert("未找到！");
                     }
+                    _self.isWalking = false;
+                    _self.isFinding = false;
                     clearInterval(timer);
                 } else {
                     ++iter;
@@ -92,7 +93,7 @@ function TreeWalker() {
                 if(_self.isFinding) {
                     if(stack[iter].innerHTML.split(/\W+/g)[0] == keyword) {
                         var findNode = stack[iter];
-                        this.found = true;
+                        _self.found = true;
                         setTimeout(function() {
                             findNode.style.backgroundColor = "#FC02EA";
                         }, speeder.value * 2);
