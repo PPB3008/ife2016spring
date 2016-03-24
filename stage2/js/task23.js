@@ -30,6 +30,7 @@ function TreeWalker() {
     this.stack = [];
     this.isWalking = false;
     this.isFinding = false;
+    this.found = false;
     this.root = document.querySelector(".root");
     this.preOrder = function(node) {
         var tempNode = node.firstElementChild || null;
@@ -79,6 +80,9 @@ function TreeWalker() {
                     stack[iter].style.backgroundColor = "#FFFFFF";
                     _self.isWalking = false;
                     _self.isFinding = false;
+                    if(!this.found) {
+                        alert("未找到！");
+                    }
                     clearInterval(timer);
                 } else {
                     ++iter;
@@ -88,6 +92,7 @@ function TreeWalker() {
                 if(_self.isFinding) {
                     if(stack[iter].innerHTML.split(/\W+/g)[0] == keyword) {
                         var findNode = stack[iter];
+                        this.found = true;
                         setTimeout(function() {
                             findNode.style.backgroundColor = "#FC02EA";
                         }, speeder.value * 2);
