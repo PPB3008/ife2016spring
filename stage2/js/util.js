@@ -34,3 +34,7 @@ function init(queue, lin) {
         lin.click();
     }
 };
+
+function trim(word) {
+    return word.replace(/^\s+|\s+$/g,"");
+};
