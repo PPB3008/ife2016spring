@@ -46,3 +46,9 @@
     color: #FFFFFF;
     border-radius: 20px;
 }
+.formBar>button {
+    margin-left: 400px;
+    width: 100px;
+    height: 60px;
+    line-height: 60px;
+}
