@@ -26,6 +26,22 @@ function getTarget(event) {
     return event.target || event.srcElement;
 };
 
+/**
+ * prevent default
+ */
+function preventDefault(event) {
+    if(event.preventDefault) {
+        preventDefault = function(event) {
+            event.preventDefault;
+        }
+    } else {
+        preventDefault = function(event) {
+            event.returnValue = false;
+        }
+    }
+    return preventDefault(event);
+};
+
 function init(queue, lin) {
     var randHeight, i, input = document.querySelector("input");
     queue.innerHTML = "";

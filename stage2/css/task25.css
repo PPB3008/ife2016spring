@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #44A4FA;
+}
+.root {
+    border-top: 5px solid #FFFFFF;
+    border-left: 5px solid #FFFFFF;
+    margin: 100px auto;
+    width: 300px;
+    background-color: #44A4FA;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-family: "SimHei";
+}
+.node {
+    border-top: 5px solid #FFFFFF;
+    border-left: 5px solid #FFFFFF;
+    display: none;
+    margin: 20px 0 0 20px;
+    line-height: 30px;
+    background-color: #44A4FA;
+}
+.cmd {
+    text-align: center;
+}
+.cmd>button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
