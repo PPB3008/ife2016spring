@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+input[type="radio"] {
+    height: 20px;
+    width: 20px;
+}
+form {
+    padding-left: 200px;
+    padding-top: 40px;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: none;
+    border: 1px solid #000000;
+    border-bottom: none;
+    margin: 40px 80px 0 0;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    outline: none;
+    background: url(../../stage1/img/95.gif) no-repeat 182px 10px #2A2E3D;
+    color: #FFFFFF;
+}
+select:first-child, select:nth-child(2) {
+    display: inline-block;
+}
+.employee_info {
+    display: none;
+    margin-top: 40px;
+}
+#employment {
+    width: 400px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    outline: none;
+}
