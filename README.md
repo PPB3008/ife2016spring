@@ -16,7 +16,8 @@
 * http://hunnble.github.io/ife2016spring/stage2/task22.html
 * http://hunnble.github.io/ife2016spring/stage2/task23.html
 * http://hunnble.github.io/ife2016spring/stage2/task24.html
+* http://hunnble.github.io/ife2016spring/stage2/task25.html
 * http://hunnble.github.io/ife2016spring/stage2/task29.html
 * http://hunnble.github.io/ife2016spring/stage2/task30.html
-* http://hunnble.github.io/ife2016spring/stage2/task25.html
+* http://hunnble.github.io/ife2016spring/stage2/task31.html
 * http://hunnble.github.io/ife2016spring/stage2/task32.html
