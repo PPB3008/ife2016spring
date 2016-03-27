@@ -8,12 +8,12 @@
         text      = cmd.querySelector("input"),
         focusNode = root;
 
-    addHandler(root, "click", function(event) {
+    addHandler(root, "dblclick", function(event) {
         preventDefault(event);
         var targetNode = getTarget(event);
         triggerNode(targetNode);
     });
-    addHandler(root, "dblclick", function(event) {
+    addHandler(root, "click", function(event) {
         preventDefault(event);
         var targetNode = getTarget(event);
         focusNode.style.borderColor = "#FFFFFF";
