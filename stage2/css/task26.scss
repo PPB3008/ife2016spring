@@ -1,0 +1,75 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "SimHei";
+}
+html, body {
+    width: 100%;
+    height: 100%;
+}
+body {
+    background: url(../img/space.png) no-repeat;
+}
+.space {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.cmd {
+    position: absolute;
+    right: 0;
+    width: 20%;
+    height: 100%;
+}
+.earth {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  margin: -100px 0 0 -100px;
+  width: 100px;
+  height: 100px;
+  background: url(../img/earth.jpg) no-repeat;
+  background-color: transparent;
+  border-radius: 50%;
+}
+#createBtn {
+    margin-left: 60px;
+    height: 40px;
+    width: 200px;
+    font-size: 24px;
+    line-height: 40px;
+}
+@mixin ship($distance) {
+    transform-origin: 50+$distance 50+$distance;
+    -webkit-transform:rotate(0deg);
+    -ms-transform:rotate(0deg);
+    -moz-transform:rotate(0deg);
+    -o-transform:rotate(0deg);
+    transform:rotate(0deg);
+    border-radius: 50%;
+    position: absolute;
+    top: -1*$distance;
+    left: -1*$distance;
+    width: 40px;
+    height: 40px;
+    background: url(../img/ufo.jpg) no-repeat 40% 40%;
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+}
+.ship1 {
+    @include ship(30px);
+}
+.ship2 {
+    @include ship(70px);
+}
+.ship3 {
+    @include ship(110px);
+}
+.ship4 {
+    @include ship(150px);
+}
