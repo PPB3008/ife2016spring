@@ -15,6 +15,11 @@ var mediator = {
 
             console.log(signal.command + " command publishing");
             _self.publish(signal);
+
+            // 接收到删除命令则将飞船从飞船队列删除,这个语句必须要在publish之后进行。因为Ship的publish需要访问飞船队列
+            if(signal.command == "destroy") {
+                ships[signal.index-1] = null;
+            }
         }, 1000);
     },
     // 广播命令到飞船队列中所有飞船
@@ -149,13 +154,10 @@ var Ship = function (index) {
     };
     // 自毁系统
     this.destroySelf = function () {
-        var earth = document.querySelector(".earth"),
-            controlBar   = this.controlBar;
+        var earth = document.querySelector(".earth");
 
         this.stop();
         earth.removeChild(this.ship);
-        controlBar.parentNode.removeChild(controlBar);
-        mediator.ships[this.index-1] = null;
     };
     // 信号接收与处理系统
     this.subscribe = function (signal) {
@@ -211,6 +213,11 @@ var Commander = function () {
                     index = tempIndex;
                 }
             });
+
+            // 如果点击删除按钮，则删除按钮组
+            if(index == 2) {
+                cmd.removeChild(btn.parentNode);
+            }
             commander.command({
                 index: parseInt(cmdBar.querySelector("span").innerHTML.substr(1, 1), 10),
                 command: commands[index]
