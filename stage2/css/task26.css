@@ -14,6 +14,10 @@ html, body {
 
 body {
   background: url(../img/space.png) no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  background-size: cover;
 }
 
 .space {
@@ -32,8 +36,8 @@ body {
 .earth {
   position: absolute;
   top: 50%;
-  left: 40%;
-  margin: -100px 0 0 -100px;
+  left: 50%;
+  margin: -50px 0 0 -50px;
   width: 100px;
   height: 100px;
   background: url(../img/earth.jpg) no-repeat;

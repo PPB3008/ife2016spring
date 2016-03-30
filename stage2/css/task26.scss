@@ -12,6 +12,10 @@ html, body {
 }
 body {
     background: url(../img/space.png) no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -ms-background-size:cover;
+    background-size:cover;
 }
 .space {
     position: relative;
@@ -27,8 +31,8 @@ body {
 .earth {
   position: absolute;
   top: 50%;
-  left: 40%;
-  margin: -100px 0 0 -100px;
+  left: 50%;
+  margin: -50px 0 0 -50px;
   width: 100px;
   height: 100px;
   background: url(../img/earth.jpg) no-repeat;
@@ -49,6 +53,13 @@ body {
     -moz-transform:rotate(0deg);
     -o-transform:rotate(0deg);
     transform:rotate(0deg);
+    // background: -moz-linear-gradient(right top, #047EF8, #C4EFF7);
+    // background: -webkit-linear-gradient(right top, #047EF8, #C4EFF7);
+    // background: -o-linear-gradient(right top, #047EF8, #C4EFF7);
+    // border-top-right-radius: 60%;
+    // border-top-left-radius: 60%;
+    // border-bottom-right-radius: 60%;
+    // border-bottom-left-radius: 10%;
     border-radius: 50%;
     position: absolute;
     top: -1*$distance;
