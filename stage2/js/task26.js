@@ -149,10 +149,12 @@ var Ship = function (index) {
     };
     // 自毁系统
     this.destroySelf = function () {
-        var earth = document.querySelector(".earth");
+        var earth = document.querySelector(".earth"),
+            controlBar   = this.controlBar;
 
         this.stop();
         earth.removeChild(this.ship);
+        controlBar.parentNode.removeChild(controlBar);
         mediator.ships[this.index-1] = null;
     };
     // 信号接收与处理系统
