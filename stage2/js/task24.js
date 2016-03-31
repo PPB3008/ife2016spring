@@ -52,90 +52,98 @@ function TreeWalker() {
     this.found = false;
     this.root = document.querySelector(".root");
     this.focusNode = this.root;
-    this.preOrder = function(node) {
-        var tempNode = node.firstElementChild || null;
-        this.stack.push(node);
-        while(tempNode) {
-            this.preOrder(tempNode);
-            tempNode = tempNode.nextElementSibling;
-        }
-    };
-    this.postOrder = function(node) {
-        var tempNode = node.firstElementChild || null;
-        while(tempNode) {
-            this.postOrder(tempNode);
-            tempNode = tempNode.nextElementSibling;
-        }
-        this.stack.push(node);
-    };
-    this.findText = function(node) {
-        if(!node || node.tagName != "DIV") {
+};
+
+TreeWalker.prototype.preOrder = function(node) {
+    var tempNode = node.firstElementChild || null;
+    this.stack.push(node);
+    while(tempNode) {
+        this.preOrder(tempNode);
+        tempNode = tempNode.nextElementSibling;
+    }
+};
+
+TreeWalker.prototype.postOrder = function(node) {
+    var tempNode = node.firstElementChild || null;
+    while(tempNode) {
+        this.postOrder(tempNode);
+        tempNode = tempNode.nextElementSibling;
+    }
+    this.stack.push(node);
+};
+
+TreeWalker.prototype.findText = function(node) {
+    if(!node || node.tagName != "DIV") {
+        return false;
+    }
+    this.stack.push(node);
+    this.queue.push(node);
+    this.findText(node.nextElementSibling);
+    node = this.queue.shift();
+    this.findText(node.firstElementChild);
+};
+
+TreeWalker.prototype.animation = function() {
+    var stack   = this.stack,
+        speeder = document.querySelector("#speeder"),
+        keyword = document.querySelector("#keyword").value,
+        iter    = 0,
+        self    = this,
+        timer;
+
+    self.stack = [];
+    if(!self.isWalking) {
+        self.found = false;
+        self.isWalking = true;
+        stack[iter].style.backgroundColor = "#02FE0C";
+        timer = setInterval(function() {
+            if(iter == stack.length-1) {
+                stack[iter].style.backgroundColor = "#FFFFFF";
+                if(self.isFinding && !self.found) {
+                    alert("未找到！");
+                }
+                self.isWalking = false;
+                self.isFinding = false;
+                clearInterval(timer);
+            } else {
+                ++iter;
+                stack[iter-1].style.backgroundColor = "#FFFFFF";
+                stack[iter].style.backgroundColor = "#02FE0C";
+            }
+            if(self.isFinding) {
+                if(stack[iter].innerHTML.split(/\W+/g)[0] == keyword) {
+                    var findNode = stack[iter];
+                    self.found = true;
+                    setTimeout(function() {
+                        findNode.style.backgroundColor = "#FC02EA";
+                    }, speeder.value);
+                    setTimeout(function() {
+                        findNode.style.backgroundColor = "#FFFFFF";
+                    }, 3000);
+                }
+            }
+        }, speeder.value);
+    }
+};
+
+TreeWalker.prototype.deleteNode = function() {
+    if(this.focusNode && this.focusNode != this.root) {
+        this.focusNode.parentNode.removeChild(this.focusNode);
+    } else if (this.root.id != "") {
+        alert("根节点不允许被删除");
+    }
+};
+
+TreeWalker.prototype.addNode = function() {
+    var nodeTag = trim(document.querySelector("#nodeTag").value), newNode;
+    if(nodeTag == "") {
+        alert("请输入节点内容");
+    } else if (this.focusNode) {
+        newNode = document.createElement("div");
+        newNode.innerHTML = nodeTag;
+        if(this.focusNode == this.root && !this.root.id) {
             return false;
         }
-        this.stack.push(node);
-        this.queue.push(node);
-        this.findText(node.nextElementSibling);
-        node = this.queue.shift();
-        this.findText(node.firstElementChild);
-    };
-    this.animation = function() {
-        var stack   = this.stack,
-            speeder = document.querySelector("#speeder"),
-            keyword = document.querySelector("#keyword").value,
-            iter    = 0, timer, _self = this;
-
-        _self.stack = [];
-        if(!_self.isWalking) {
-            _self.found = false;
-            _self.isWalking = true;
-            stack[iter].style.backgroundColor = "#02FE0C";
-            timer = setInterval(function() {
-                if(iter == stack.length-1) {
-                    stack[iter].style.backgroundColor = "#FFFFFF";
-                    if(_self.isFinding && !_self.found) {
-                        alert("未找到！");
-                    }
-                    _self.isWalking = false;
-                    _self.isFinding = false;
-                    clearInterval(timer);
-                } else {
-                    ++iter;
-                    stack[iter-1].style.backgroundColor = "#FFFFFF";
-                    stack[iter].style.backgroundColor = "#02FE0C";
-                }
-                if(_self.isFinding) {
-                    if(stack[iter].innerHTML.split(/\W+/g)[0] == keyword) {
-                        var findNode = stack[iter];
-                        _self.found = true;
-                        setTimeout(function() {
-                            findNode.style.backgroundColor = "#FC02EA";
-                        }, speeder.value);
-                        setTimeout(function() {
-                            findNode.style.backgroundColor = "#FFFFFF";
-                        }, 3000);
-                    }
-                }
-            }, speeder.value);
-        }
-    };
-    this.deleteNode = function() {
-        if(this.focusNode != this.root) {
-            this.focusNode.parentNode.removeChild(this.focusNode);
-        } else if (this.root.id != "") {
-            alert("根节点不允许被删除");
-        }
-    };
-    this.addNode = function() {
-        var nodeTag = trim(document.querySelector("#nodeTag").value), newNode;
-        if(nodeTag == "") {
-            alert("请输入节点内容");
-        } else if (this.focusNode) {
-            newNode = document.createElement("div");
-            newNode.innerHTML = nodeTag;
-            if(this.focusNode == this.root && !this.root.id) {
-                return false;
-            }
-            this.focusNode.appendChild(newNode);
-        }
-    };
+        this.focusNode.appendChild(newNode);
+    }
 };
