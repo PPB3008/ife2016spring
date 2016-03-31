@@ -1,5 +1,5 @@
 (function() {
-    var treeWalker = new TreeWalker,
+    var treeWalker = new TreeWalker(),
         btns       = document.querySelectorAll("input"),
         preBtn     = btns[0],
         postBtn    = btns[1],
