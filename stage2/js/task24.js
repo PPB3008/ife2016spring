@@ -27,10 +27,14 @@
         treeWalker.animation();
     });
     addHandler(deleteBtn, "click", function() {
-        treeWalker.deleteNode();
+        if(0 < treeWalker.stack.length) {
+            treeWalker.deleteNode();
+        }
     });
     addHandler(addBtn, "click", function() {
-        treeWalker.addNode();
+        if(0 < treeWalker.stack.length) {
+            treeWalker.addNode();
+        }
     });
     addHandler(root, "click", function(event) {
         var target = getTarget(event);
