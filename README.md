@@ -22,6 +22,7 @@
 * [任务25](http://hunnble.github.io/ife2016spring/stage2/task25.html)
 * [任务26](http://hunnble.github.io/ife2016spring/stage2/task26.html)
 * [任务27](http://hunnble.github.io/ife2016spring/stage2/task27.html)
+* [任务28](http://hunnble.github.io/ife2016spring/stage2/task28.html)
 * [任务29](http://hunnble.github.io/ife2016spring/stage2/task29.html)
 * [任务30](http://hunnble.github.io/ife2016spring/stage2/task30.html)
 * [任务31](http://hunnble.github.io/ife2016spring/stage2/task31.html)
