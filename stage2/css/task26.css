@@ -139,4 +139,19 @@ body {
   text-align: center;
 }
 
+.screen {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  width: 400px;
+  background-color: #FFFFFF;
+  text-align: center;
+  opacity: 0.4;
+}
+
+.screen:hover {
+  opacity: 0.8;
+}
+
 /*# sourceMappingURL=task26.css.map */

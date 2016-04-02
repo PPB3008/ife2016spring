@@ -58,13 +58,6 @@ body {
     -moz-transform:rotate(0deg);
     -o-transform:rotate(0deg);
     transform:rotate(0deg);
-    // background: -moz-linear-gradient(right top, #047EF8, #C4EFF7);
-    // background: -webkit-linear-gradient(right top, #047EF8, #C4EFF7);
-    // background: -o-linear-gradient(right top, #047EF8, #C4EFF7);
-    // border-top-right-radius: 60%;
-    // border-top-left-radius: 60%;
-    // border-bottom-right-radius: 60%;
-    // border-bottom-left-radius: 10%;
     border-radius: 50%;
     position: absolute;
     top: -1*$distance;
@@ -88,4 +81,17 @@ body {
 }
 .ship4 {
     @include ship(150px);
+}
+.screen {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    width: 400px;
+    background-color: #FFFFFF;
+    text-align: center;
+    opacity: 0.4;
+}
+.screen:hover {
+    opacity: 0.8;
 }
