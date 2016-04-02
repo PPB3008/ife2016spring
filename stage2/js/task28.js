@@ -7,14 +7,14 @@ var BUS = {
         this.ships[index] = ship;
     },
     // 接收传来的信息
-    subscribe: function (signal) {
+    receive: function (signal) {
         var self = this,
             timer;
 
         // 用信号长度来区分是从行星发来的信号还是飞船广播的信号
         if (signal.length == 16) {
             // 将飞船广播的信号传递给行星
-            DC.subscribe(signal);
+            DC.receive(signal);
         } else {
             // 将行星发来的信号广播给每个飞船
             timer = setInterval(function () {
@@ -44,7 +44,7 @@ var BUS = {
         if(randomNum >= loseProbability) {
             for(var iter in this.ships) {
                 if(this.ships[iter] && this.ships[iter] instanceof Ship) {
-                    this.ships[iter].subscribe(signal);
+                    this.ships[iter].receive(signal);
                 }
             }
             console.log(signal + " signal has been published to the target ship !");
@@ -189,7 +189,7 @@ Ship.prototype.destroySelf = function () {
 };
 
 // 信号接收与处理系统
-Ship.prototype.subscribe = function (signal) {
+Ship.prototype.receive = function (signal) {
     signal = this.Adapter(signal, false);
 
     if(signal.index != this.index) {
@@ -260,7 +260,7 @@ Ship.prototype.Publisher = function(isDestroyed) {
         power: this.power
     };
 
-    BUS.subscribe(this.Adapter(signal, 1));
+    BUS.receive(this.Adapter(signal, 1));
 };
 
 /* 指挥官 */
@@ -268,7 +268,7 @@ var Commander = function () {};
 
 // 发布指令
 Commander.prototype.command = function (signal) {
-    BUS.subscribe(this.Adapter(signal));
+    BUS.receive(this.Adapter(signal));
 };
 
 // 信号接收与处理
@@ -316,7 +316,7 @@ var DC = {
             power: power
         };
     },
-    subscribe: function (signal) {
+    receive: function (signal) {
         this.viewer.refresh(this.Adapter(signal));
     }
 };

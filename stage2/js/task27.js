@@ -7,7 +7,7 @@ var BUS = {
         this.ships[index] = ship;
     },
     // 接收传来的信息
-    subscribe: function (signal) {
+    receive: function (signal) {
         var self = this,
             timer;
 
@@ -37,7 +37,7 @@ var BUS = {
         if(randomNum >= loseProbability) {
             for(var iter in this.ships) {
                 if(this.ships[iter] && this.ships[iter] instanceof Ship) {
-                    this.ships[iter].subscribe(signal);
+                    this.ships[iter].receive(signal);
                 }
             }
             console.log(signal + " signal has been published to the target ship !");
@@ -171,7 +171,7 @@ Ship.prototype.destroySelf = function () {
 };
 
 // 信号接收与处理系统
-Ship.prototype.subscribe = function (signal) {
+Ship.prototype.receive = function (signal) {
     signal = this.Adapter(signal);
 
     if(signal.index != this.index) {
@@ -210,7 +210,7 @@ Ship.prototype.Adapter = function(signal) {
 var Commander = function () {};
 
 Commander.prototype.command = function (signal) {
-    BUS.subscribe(this.Adapter(signal));
+    BUS.receive(this.Adapter(signal));
 };
 
 Commander.prototype.Adapter = function (signal) {

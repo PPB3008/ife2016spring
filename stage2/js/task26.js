@@ -7,7 +7,7 @@ var mediator = {
         this.ships[index] = ship;
     },
     // 接收传来的信息
-    subscribe: function (signal) {
+    receive: function (signal) {
         var self = this;
 
         setTimeout(function () {
@@ -32,7 +32,7 @@ var mediator = {
         if(randomNum >= loseProbability) {
             for(var iter in this.ships) {
                 if(this.ships[iter] && this.ships[iter] instanceof Ship) {
-                    this.ships[iter].subscribe(signal);
+                    this.ships[iter].receive(signal);
                 }
             }
             console.log(signal.command + " command done");
@@ -160,7 +160,7 @@ Ship.prototype.destroySelf = function () {
 };
 
 // 信号接收与处理系统
-Ship.prototype.subscribe = function (signal) {
+Ship.prototype.receive = function (signal) {
     if(signal.index != this.index) {
         return false;
     }
@@ -186,7 +186,7 @@ var Commander = function () {};
 
 // 发布命令
 Commander.prototype.command = function (signal) {
-    mediator.subscribe(signal);
+    mediator.receive(signal);
 };
 
 (function () {
