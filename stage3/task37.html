@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>任务37</title>
+    <link rel="stylesheet" href="./css/task37.css">
+</head>
+<body>
+    <button id="testBtn">点击弹窗</button>
+    <div id="alertBar">
+        <div class="largeHeight">
+            <p>这是一个测试页面</p>
+            <p>点击上方按钮显示弹出层</p>
+            <p>点击上方弹出窗口之外隐藏弹出层</p>
+            <p>Have fun !</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/util.js"></script>
+    <script type="text/javascript" src="./js/alertBar.js"></script>
+    <script type="text/javascript" src="./js/HH.js"></script>
+    <script type="text/javascript">
+
+        var alertBar = document.querySelector('#alertBar');
+
+        // 如果需要遮罩层,建议将wrapper定为body元素并设置hasShader: true
+        // React.createClass内是一个对象,这里的createClass是用参数方式直接创建组件
+        var testBtn = document.querySelector('#testBtn');
+        addHandler(testBtn, 'click', function () {
+            var alertComponent = HH.createClass(AlertBar, {
+                targetId: 'alertBar',
+                titleTxt: 'UI组件',
+                contentTxt: 'UI组件之弹出窗口,4.12日',
+                hasShader: true,
+                isShow: true,
+                width: 300,
+                height: 200,
+                drag: false,
+                flexible: false,
+                btns: {
+                    1: '确认',
+                    2: '取消'
+                },
+                className: {
+                    alertWindow: 'alertWindow',
+                    title: 'title',
+                    content: 'content',
+                    shader: 'shader',
+                    btn: 'btn'
+                }
+            });
+
+            HH.render(
+                alertComponent,
+                alertBar
+            );
+        });
+
+    </script>
+</body>
+</html>

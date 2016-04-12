@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.largeHeight {
+    height: 2000px;
+}
+.alertWindow {
+    background-color: #FAE4E4;
+    color: #000000;
+    font-family: 'SimHei', Arial;
+}
+.title {
+    background-color: #F56C6F;
+    font-size: 24px;
+    line-height: 40px;
+    text-indent: 16px;
+}
+.content {
+    padding: 16px;
+    font-size: 16px;
+}
+.shader {
+    background-color: #E60F32;
+    opacity: 0.8;
+}
+.btn {
+    display: inline-block;
+    margin-right: 16px;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #F56C6F;
+    text-align: center;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #F56C6F;
+    color: #FAE4E4;
+}
