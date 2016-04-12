@@ -19,6 +19,26 @@ function addHandler(element, type, handler) {
 };
 
 /**
+ * remove handler
+ */
+function removeHandler(element, type, handler){
+    if(element.removeEventListener) {
+        removeHandler = function(element, type, handler) {
+            element.removeEventListener(type,handler,false);
+        };
+    } else if (element.detachEvent) {
+        removeHandler = function (element, type, handler) {
+            element.detachEvent("on"+type,handler);
+        };
+    }else{
+        removeHandler = function (element, type, handler) {
+            element["on"+type]=null;
+        };
+    }
+    return removeHandler(element, type, handler);
+};
+
+/**
  * get target from event
  */
 function getTarget(event) {

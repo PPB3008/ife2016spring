@@ -1,7 +1,7 @@
 /*
  * UI组件之弹出层
  * author: hunnble
- * version: 1.0
+ * version: 1.1
  * description: like React, just create Component and render it !
  *
  * how to use:
@@ -55,7 +55,12 @@ function AlertBar (config) {
     this.drag       = config.drag || false;
     this.flexible   = config.flexible || false;
 
-    this.shader     = document.createElement('div');
+    this.shader      = document.createElement('div');
+    this.alertWindow = document.createElement('div');
+    this.title       = document.createElement('h4');
+    this.startX      = 0;
+    this.startY      = 0;
+
     this.bindEvents();
 
     return this.render();
@@ -66,8 +71,8 @@ function AlertBar (config) {
  */
 AlertBar.prototype.render = function () {
     var shader      = this.shader,
-        alertWindow = document.createElement('div'),
-        title       = document.createElement('h4'),
+        alertWindow = this.alertWindow,
+        title       = this.title,
         content     = document.createElement('p'),
         btnBar      = document.createElement('div'),
         btns        = [],
@@ -127,11 +132,10 @@ AlertBar.prototype.render = function () {
 AlertBar.prototype.toggle = function () {
     this.isShow = this.isShow ? false : true;
     this.render();
-    // this.shader.style.display = this.isShow ? 'block' : 'none';
 };
 
 /**
- * 绑定有关事件(*为当前版本未实现): 点击遮罩层、拖拽(*)、放缩(*)
+ * 绑定有关事件: 点击遮罩层、拖拽
  */
 AlertBar.prototype.bindEvents = function () {
     var self = this;
@@ -143,6 +147,44 @@ AlertBar.prototype.bindEvents = function () {
             self.toggle();
         }
     });
+
+    if(this.drag) {
+        addHandler(this.title, 'mousedown', function (e) {
+            e = e || window.event;
+            preventDefault(e);
+            self.startX = e.clientX - self.alertWindow.offsetLeft;
+            self.startY = e.clientY - self.alertWindow.offsetTop;
+            addHandler(self.alertWindow, 'mousemove', dragging);
+        });
+        addHandler(this.alertWindow, 'mouseup', function(e) {
+            e = e || window.event;
+            preventDefault(e);
+            removeHandler(self.alertWindow, 'mousemove', dragging);
+        });
+    }
+
+    function dragging(e) {
+        e = e || window.event;
+
+        self.alertWindow.style.left = e.clientX - self.startX + self.alertWindow.offsetWidth / 2 + 'px';
+        self.alertWindow.style.top  = e.clientY - self.startY + self.alertWindow.offsetHeight / 2 + 'px';
+
+        var documentElement = document.body || document.documentElement;
+
+        // 边界检查
+        if(self.alertWindow.offsetTop > (window.innerHeight - self.alertWindow.offsetHeight)) {
+            self.alertWindow.style.top = (window.innerHeight - self.alertWindow.offsetHeight) + self.alertWindow.offsetHeight / 2 + 'px';
+        }
+        if(self.alertWindow.offsetTop < 0) {
+            self.alertWindow.style.top = self.alertWindow.offsetHeight / 2 + 'px';
+        }
+        if(self.alertWindow.offsetLeft > (documentElement.offsetWidth - self.alertWindow.offsetWidth)) {
+            self.alertWindow.style.left = (documentElement.offsetWidth - self.alertWindow.offsetWidth) + self.alertWindow.offsetWidth / 2 + 'px';
+        }
+        if(self.alertWindow.offsetLeft < 0) {
+            self.alertWindow.style.left = self.alertWindow.offsetWidth / 2 + 'px';
+        }
+    };
 };
 
 
