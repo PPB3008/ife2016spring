@@ -1,7 +1,7 @@
 /*
  * UI组件之弹出层
  * author: hunnble
- * version: 1.1
+ * version: 1.2
  * description: like React, just create Component and render it !
  *
  * how to use:
@@ -47,7 +47,7 @@ function AlertBar (config) {
     };
     this.titleTxt   = config.titleTxt || 'Default title';
     this.contentTxt = config.contentTxt || 'Default content';
-    this.btns       = config.btns || {};
+    this.btnsTxt       = config.btns || {};
     this.hasShader  = config.hasShader || false;
     this.isShow     = config.isShow || false;
     this.width      = config.width || 400;
@@ -58,12 +58,13 @@ function AlertBar (config) {
     this.shader      = document.createElement('div');
     this.alertWindow = document.createElement('div');
     this.title       = document.createElement('h4');
+    this.content     = document.createElement('p');
+    this.btnBar      = document.createElement('div');
+    this.btns        = [];
     this.startX      = 0;
     this.startY      = 0;
 
     this.bindEvents();
-
-    return this.render();
 };
 
 /**
@@ -73,9 +74,9 @@ AlertBar.prototype.render = function () {
     var shader      = this.shader,
         alertWindow = this.alertWindow,
         title       = this.title,
-        content     = document.createElement('p'),
-        btnBar      = document.createElement('div'),
-        btns        = [],
+        content     = this.content,
+        btnBar      = this.btnBar,
+        btns        = this.btns,
         virtualDOM  = document.createElement('div');
 
     shader.className             = this.className['shader'];
@@ -107,10 +108,11 @@ AlertBar.prototype.render = function () {
     content.className = this.className['content'];
     content.innerHTML = this.contentTxt;
 
-    for(var key in this.btns) {
+    btnBar.innerHTML = '';
+    for(var key in this.btnsTxt) {
         btns[key] = document.createElement('div');
         btns[key].className = this.className['btn'];
-        btns[key].innerHTML = this.btns[key];
+        btns[key].innerHTML = this.btnsTxt[key];
         btnBar.appendChild(btns[key]);
     }
     btnBar.style.position = 'absolute';

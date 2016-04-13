@@ -18,44 +18,7 @@
     </div>
     <script type="text/javascript" src="./js/util.js"></script>
     <script type="text/javascript" src="./js/alertBar.js"></script>
-    <script type="text/javascript" src="./js/HH.js"></script>
-    <script type="text/javascript">
-
-        var alertBar = document.querySelector('#alertBar');
-
-        // 如果需要遮罩层,建议将wrapper定为body元素并设置hasShader: true
-        // React.createClass内是一个对象,这里的createClass是用参数方式直接创建组件
-        var testBtn = document.querySelector('#testBtn');
-        addHandler(testBtn, 'click', function () {
-            var alertComponent = HH.createClass(AlertBar, {
-                targetId: 'alertBar',
-                titleTxt: 'UI组件',
-                contentTxt: 'UI组件之弹出窗口,4.12日',
-                hasShader: true,
-                isShow: true,
-                width: 300,
-                height: 200,
-                drag: true,
-                flexible: false,
-                btns: {
-                    1: '确认',
-                    2: '取消'
-                },
-                className: {
-                    alertWindow: 'alertWindow',
-                    title: 'title',
-                    content: 'content',
-                    shader: 'shader',
-                    btn: 'btn'
-                }
-            });
-
-            HH.render(
-                alertComponent,
-                alertBar
-            );
-        });
-
-    </script>
+    <script type="text/javascript" src="./js/Hum.js"></script>
+    <script type="text/javascript" src="./js/task37.js"></script>
 </body>
 </html>
