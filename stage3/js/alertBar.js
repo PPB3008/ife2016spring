@@ -47,7 +47,7 @@ function AlertBar (config) {
     };
     this.titleTxt   = config.titleTxt || 'Default title';
     this.contentTxt = config.contentTxt || 'Default content';
-    this.btnsTxt       = config.btns || {};
+    this.btnsTxt    = config.btns || {};
     this.hasShader  = config.hasShader || false;
     this.isShow     = config.isShow || false;
     this.width      = config.width || 400;
@@ -142,7 +142,7 @@ AlertBar.prototype.toggle = function () {
 AlertBar.prototype.bindEvents = function () {
     var self = this;
 
-    addHandler(this.shader, 'click', function (e) {
+    addHandler(this.shader, 'mousedown', function (e) {
         var target = getTarget(e);
 
         if(target === self.shader) {
@@ -153,14 +153,12 @@ AlertBar.prototype.bindEvents = function () {
     if(this.drag) {
         addHandler(this.title, 'mousedown', function (e) {
             e = e || window.event;
-            preventDefault(e);
             self.startX = e.clientX - self.alertWindow.offsetLeft;
             self.startY = e.clientY - self.alertWindow.offsetTop;
             addHandler(self.alertWindow, 'mousemove', dragging);
         });
-        addHandler(this.alertWindow, 'mouseup', function(e) {
+        addHandler(document, 'mouseup', function(e) {
             e = e || window.event;
-            preventDefault(e);
             removeHandler(self.alertWindow, 'mousemove', dragging);
         });
     }
