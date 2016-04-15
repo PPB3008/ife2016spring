@@ -2,10 +2,14 @@
     margin: 0;
     padding: 0;
 }
-table {
+.largeHeight {
+    height: 2000px;
+}
+.table {
+    border-bottom: 1px solid #B4B4B4;
     margin: 100px auto;
 }
-th, td {
+.th, .td {
     border: 1px solid #B4B4B4;
     border-right: 0;
     border-bottom: 0;
@@ -14,17 +18,17 @@ th, td {
     line-height: 30px;
     text-align: center;
 }
-th {
+.th {
     background-color: #433C3C;
     color: #FFFFFF;
 }
-th:last-child, td:last-child {
+.th:last-child, .td:last-child {
     border-right: 1px solid #B4B4B4;
 }
-tr:last-child th, tr:last-child td {
+.tr:last-child .th {
     border-bottom: 1px solid #B4B4B4;
 }
-td:hover {
+.td:hover {
     background-color: #F4F5F6;
 }
 .btn {

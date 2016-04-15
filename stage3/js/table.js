@@ -18,8 +18,9 @@ function Table (config) {
     this.rows     = this.data['content'][0].length + 1;
     this.cols     = this.data['title'].length;
 
-    this.table = document.createElement('table');
-    this.th    = document.createElement('th');
+    this.table    = document.createElement('table');
+    this.th       = document.createElement('th');
+    this.headerTr = document.createElement('tr');
 
     this.init();
     this.bindEvents();
@@ -29,13 +30,14 @@ function Table (config) {
  * 根据初始数据初始化属性
  */
 Table.prototype.init = function () {
-    var table = this.table,
-        trs   = this.trs,
-        data  = this.data,
-        i     = 0,
-        j     = 0,
-        len   = 0,
-        self  = this;
+    var table    = this.table,
+        trs      = this.trs,
+        headerTr = this.headerTr;
+        data     = this.data,
+        i        = 0,
+        j        = 0,
+        len      = 0,
+        self     = this;
 
     var th, tr, td;
 
@@ -75,6 +77,14 @@ Table.prototype.init = function () {
             trs[row+1].appendChild(td);
         })
     });
+
+    // 冻结首行
+    headerTr.innerHTML      = this.trs[0].innerHTML;
+    headerTr.className      = this.trs[0].className;
+    headerTr.style.display  = 'none';
+    headerTr.style.position = 'fixed';
+    headerTr.style.top      = '0';
+    table.appendChild(headerTr);
 };
 
 /**
@@ -86,6 +96,7 @@ Table.prototype.bindEvents = function () {
     addHandler(self.table, 'click', function (e) {
         e = e || window.event;
         var target = getTarget(e);
+        self.table.removeChild(self.headerTr);
         if(target.className == self.className['btn']) {
             var th = target.parentNode,
                 ths = self.table.querySelectorAll('th'),
@@ -96,6 +107,21 @@ Table.prototype.bindEvents = function () {
             self.sortDir = btnIndex;
             sortFunc(self, col);
             self.render();
+        }
+        self.table.appendChild(self.headerTr);
+    });
+
+    addHandler(window, 'scroll', function (e) {
+        e = e || window.event;
+
+        var table     = self.table,
+            headerTr  = self.headerTr,
+            scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+
+        if(table.offsetTop < scrollTop && table.offsetTop + table.offsetHeight > scrollTop) {
+            headerTr.style.display = 'block';
+        } else {
+            headerTr.style.display = 'none';
         }
     });
 };
