@@ -1,5 +1,5 @@
 /*
- * Component Manager, it is a little like React with JSX
+ * Component Manager, it is a little like React
  */
 var Hum = {
     createClass: function (Component, config, callback) {
