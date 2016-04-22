@@ -141,3 +141,44 @@ function getDateCount(year, month) {
     }
 };
 
+/**
+ * compare two arrays for each item
+ * @param  {Array} arr1
+ * @param  {Array} arr2
+ * @return {Array}
+ */
+function compareArray(arr1, arr2) {
+    var len1 = arr1.length,
+        len2 = arr2.length,
+        len,
+        i;
+
+    for(i = 0, len = Math.min(len1, len2); i < len; ++i) {
+        if(parseInt(arr1[i], 10) < parseInt(arr2[i], 10)) {
+            return [arr1, arr2];
+        } else if (parseInt(arr1[i], 10) > parseInt(arr2[i], 10)) {
+            return [arr2, arr1];
+        }
+    }
+    if(len1 <= len2) {
+        return [arr1, arr2];
+    } else {
+        return [arr2, arr1];
+    }
+};
+
+/**
+ * calculate days between two dates
+ * @param  {String} date1 'year-month-date'
+ * @param  {String} date2 'year-month-date'
+ * @param  {String} delimiter '-' or other delimiters
+ * @return {Number}
+ */
+function dateDiff(date1, date2, delimiter) {
+    var dateArr1 = date1.split(delimiter),
+        dateArr2 = date2.split(delimiter),
+        dateObj1 = new Date(dateArr1[1] + '/' + dateArr1[2] + '/' + dateArr1[0]),
+        dateObj2 = new Date(dateArr2[1] + '/' + dateArr2[2] + '/' + dateArr2[0]);
+
+    return (Math.abs(dateObj2 - dateObj1) / 1000 / 60 / 60 / 24);
+};

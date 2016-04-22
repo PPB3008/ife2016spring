@@ -10,6 +10,7 @@ var CalendarComponent = Hum.createClass(Calendar, {
         'date': 'date',
         'focusDate': 'focusDate',
         'selector': 'selector',
+        'commitBar': 'commitBar',
         'calendarWrapper': 'calendarWrapper'
     }
 });

@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .selector {
     border: 1px solid #000000;
-    width: 100px;
+    width: 250px;
 }
 .calendarWrapper {
     position: absolute;
@@ -26,14 +26,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 .calendar {
     border: 1px solid #000000;
+    background-color: #FBAB4B;
+    color: #FFFFFF;
 }
 .calendar td {
     width: 30px;
     height: 25px;
 }
 .controlBar {
-    background-color: #FBAB4B;
-    color: #FFFFFF;
     font-weight: bolder;
 }
 .yearBar, .monthBar {
@@ -60,6 +60,24 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
 }
 .date:hover, .focusDate {
-    background-color: #FBAB4B;
+    background-color: #FFFFFF;
+    color: #FBAB4B;
+}
+.commitBar {
+    height: 30px;
+}
+.commitBar>div {
+    float: left;
+    margin-top: 5px;
+    margin-left: 50px;
+    height: 20px;
+    width: 40px;
+    line-height: 20px;
     color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+}
+.commitBar>div:hover {
+    background-color: #FFFFFF;
+    color: #FBAB4B;
 }
