@@ -1,38 +1,3 @@
-/*
- * UI组件之弹出层
- * author: hunnble
- * version: 1.2
- * description: like React, just create Component and render it !
- *
- * how to use:
- * var alertBar = new AlertBar({
- *     targetId: 'alertBar',
- *     titleTxt: 'UI组件',
- *     contentTxt: 'UI组件之弹出窗口,4.12日',
- *     hasShader: true,
- *     isShow: true,
- *     width: 300,
- *     height: 200,
- *     drag: false,
- *     flexible: false,
- *     btns: {
- *        1: '确认',
- *        2: '取消'
- *     },
- *     className: {
- *         alertWindow: 'alertWindow',
- *         title: 'title',
- *         content: 'content',
- *         shader: 'shader',
- *         btn: 'btn'
- *     }
- * });
- *
- * incompelete functions: drag, flexible
- *
- */
-
-
 /**
  * 弹出层构造函数
  * @param {Object} config
@@ -45,15 +10,16 @@ function AlertBar (config) {
         content: '',
         btns: {}
     };
-    this.titleTxt   = config.titleTxt || 'Default title';
-    this.contentTxt = config.contentTxt || 'Default content';
-    this.btnsTxt    = config.btns || {};
-    this.hasShader  = config.hasShader || false;
-    this.isShow     = config.isShow || false;
-    this.width      = config.width || 400;
-    this.height     = config.height || 300;
-    this.drag       = config.drag || false;
-    this.flexible   = config.flexible || false;
+    this.titleTxt     = config.titleTxt || 'Default title';
+    this.contentTxt   = config.contentTxt || 'Default content';
+    this.btnsTxt      = config.btns || {};
+    this.hasShader    = config.hasShader || false;
+    this.isShow       = config.isShow || false;
+    this.width        = config.width || 400;
+    this.height       = config.height || 300;
+    this.drag         = config.drag || false;
+    this.flexible     = config.flexible || false;
+    this.returnValues = config.returnValues || [];
 
     this.shader      = document.createElement('div');
     this.alertWindow = document.createElement('div');
@@ -63,6 +29,7 @@ function AlertBar (config) {
     this.btns        = [];
     this.startX      = 0;
     this.startY      = 0;
+    this.returnValue;
 
     this.bindEvents();
 };
@@ -81,7 +48,7 @@ AlertBar.prototype.render = function () {
 
     shader.className             = this.className['shader'];
     shader.style.width           = '100%';
-    shader.style.height          = (document.body.clientHeight + document.documentElement.clientHeight) + 'px';
+    shader.style.height          = document.body.offsetHeight + 'px';
     shader.style.position        = 'absolute';
     shader.style.top             = 0;
     shader.style.left            = 0;
@@ -147,6 +114,17 @@ AlertBar.prototype.bindEvents = function () {
 
         if(target === self.shader) {
             self.toggle();
+        }
+    });
+
+    addHandler(this.btnBar, 'click', function (e) {
+        var target = getTarget(e),
+            index  = -1;
+
+        if(hasClassName(target, self.className['btn'])) {
+            index = Array.prototype.indexOf.call(self.btnBar.querySelectorAll('div'), target);
+            self.toggle();
+            self.returnValue = self.returnValues[index];
         }
     });
 
