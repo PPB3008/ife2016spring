@@ -27,3 +27,13 @@
 * [任务30](http://hunnble.github.io/ife2016spring/stage2/task30.html)
 * [任务31](http://hunnble.github.io/ife2016spring/stage2/task31.html)
 * [任务32](http://hunnble.github.io/ife2016spring/stage2/task32.html)
+
+-----------
+## 第三阶段
+* [任务37](http://hunnble.github.io/ife2016spring/stage3/task37.html)
+* [任务38、39](http://hunnble.github.io/ife2016spring/stage3/task38.html)
+* [任务40](http://hunnble.github.io/ife2016spring/stage3/task40.html)
+
+-----------
+## 第四阶段
+* [查看数据页面](http://hunnble.github.io/ife2016spring/stage4/showData.html)
