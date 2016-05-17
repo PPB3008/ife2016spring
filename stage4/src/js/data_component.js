@@ -147,7 +147,20 @@ DataShow.prototype.addCharts = function () {
                             name: questionObj.questTitle,
                             type: 'pie',
                             radius: "80%",
-                            data: data
+                            data: data,
+                            label: {
+                                normal: {
+                                    show: false,
+                                    position: 'center'
+                                },
+                                emphasis: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: '30',
+                                        fontWeight: 'bold'
+                                    }
+                                }
+                            }
                         }
                     ],
                     itemStyle: {
@@ -160,6 +173,7 @@ DataShow.prototype.addCharts = function () {
                 break;
             case 3:
                 config = {
+                    top: 'middle',
                     title: {
                         subtext: '有效回答人数'
                     },
@@ -204,5 +218,11 @@ DataShow.prototype.addCharts = function () {
 };
 
 (function () {
-    var dataShow = new DataShow (data, document.querySelector('#container'));
+    var container = document.querySelector('#container');
+    var dataShow = new DataShow (data, container);
+    window.onresize = function () {
+        var content = container.querySelector('.content');
+        content.innerHTML = '';
+        var dataShow = new DataShow (data, container);
+    }
 })();

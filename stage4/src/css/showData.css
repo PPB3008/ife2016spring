@@ -28,8 +28,7 @@ header {
   background-color: #ee7419; }
   header h1, header a {
     display: inline-block;
-    margin-left: 80px;
-    height: inherit;
+    margin-left: 5%;
     line-height: 50px;
     color: #fff; }
   header h1 {
@@ -75,7 +74,7 @@ header {
       overflow: hidden;
       margin: 5px 10px; }
       #container .content .question .leftContent {
-        width: 50%;
+        width: 40%;
         float: left; }
         #container .content .question .leftContent .index {
           margin-right: 10px; }
@@ -83,8 +82,9 @@ header {
           padding-left: 30px;
           font-size: 14px; }
       #container .content .question .rightContent {
-        margin-left: 50%;
-        width: 50%;
+        overflow: hidden;
+        margin-left: 40%;
+        width: 60%;
         min-height: 150px; }
   #container .footer {
     margin: 10px auto;

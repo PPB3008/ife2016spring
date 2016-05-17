@@ -36,8 +36,7 @@ header {
     background-color: $mainColor;
     h1, a {
         display: inline-block;
-        margin-left: 80px;
-        height: inherit;
+        margin-left: 5%;
         line-height: 50px;
         color: $white;
     }
@@ -94,7 +93,7 @@ header {
             overflow: hidden;
             margin: 5px 10px;
             .leftContent {
-                width: 50%;
+                width: 40%;
                 float: left;
                 .index {
                     margin-right: 10px;
@@ -105,8 +104,9 @@ header {
                 }
             }
             .rightContent {
-                margin-left: 50%;
-                width: 50%;
+                overflow: hidden;
+                margin-left: 40%;
+                width: 60%;
                 min-height: 150px;
             }
         }
