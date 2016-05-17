@@ -1,0 +1,104 @@
+html, body {
+  font-size: 16px;
+  font-family: "Microsoft YaHei", Arial;
+  height: 100%; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre,
+form, fieldset, input, textarea, p, blockquote, th, td {
+  padding: 0;
+  margin: 0; }
+
+ol, ul {
+  list-style: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-size: 100%; }
+
+a {
+  text-decoration: none; }
+
+header {
+  height: 50px;
+  background-color: #ee7419; }
+  header h1, header a {
+    display: inline-block;
+    margin-left: 80px;
+    height: inherit;
+    line-height: 50px;
+    color: #fff; }
+  header h1 {
+    font-size: 26px; }
+  header a {
+    font-size: 19px; }
+  header h1:before {
+    content: '?';
+    display: inline-block;
+    margin-right: 5px;
+    width: 26px;
+    line-height: 1;
+    background: #fff;
+    color: #ee7419;
+    text-align: center;
+    border-radius: 50%; }
+
+#container {
+  -webkit-box-shadow: #000 0 0 10px;
+  -moz-box-shadow: #000 0 0 10px;
+  box-shadow: #000 0 0 10px;
+  overflow: hidden;
+  margin: 50px auto;
+  width: 80%;
+  background-color: #fff; }
+  #container .titleBar {
+    border-bottom: 1px solid #000;
+    margin: 10px auto;
+    width: 80%; }
+    #container .titleBar .title {
+      line-height: 40px;
+      font-size: 30px;
+      text-align: center; }
+    #container .titleBar .description {
+      padding: 5px;
+      font-size: 14px;
+      text-align: center;
+      color: #727655; }
+  #container .content {
+    margin: 10px auto;
+    width: 80%; }
+    #container .content .question {
+      overflow: hidden;
+      margin: 5px 10px; }
+      #container .content .question .leftContent {
+        width: 50%;
+        float: left; }
+        #container .content .question .leftContent .index {
+          margin-right: 10px; }
+        #container .content .question .leftContent .options {
+          padding-left: 30px;
+          font-size: 14px; }
+      #container .content .question .rightContent {
+        margin-left: 50%;
+        width: 50%;
+        min-height: 150px; }
+  #container .footer {
+    margin: 10px auto;
+    width: 80%;
+    border-top: 1px solid #000;
+    height: 80px; }
+    #container .footer .backBtn {
+      display: block;
+      margin: 10px auto;
+      width: 60px;
+      line-height: 30px;
+      text-align: center;
+      background-color: #ee7419;
+      color: #fff;
+      border-radius: 5px; }
+
+/*# sourceMappingURL=showData.css.map */

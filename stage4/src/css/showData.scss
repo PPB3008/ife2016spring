@@ -1,0 +1,129 @@
+$mainColor: #ee7419;
+$white: #fff;
+
+@mixin center {
+    margin: 10px auto;
+    width: 80%;
+}
+
+html, body {
+    font-size: 16px;
+    font-family: "Microsoft YaHei", Arial;
+    height: 100%;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+    padding: 0;
+    margin: 0;
+}
+ol, ul {
+    list-style: none;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    font-size: 100%;
+}
+a {
+    text-decoration: none;
+}
+header {
+    height: 50px;
+    background-color: $mainColor;
+    h1, a {
+        display: inline-block;
+        margin-left: 80px;
+        height: inherit;
+        line-height: 50px;
+        color: $white;
+    }
+    h1 {
+        font-size: 26px;
+    }
+    a {
+        font-size: 19px;
+    }
+    h1:before {
+        content: '?';
+        display: inline-block;
+        margin-right: 5px;
+        width: 26px;
+        line-height: 1;
+        background: $white;
+        color: $mainColor;
+        text-align: center;
+        border-radius: 50%;
+
+    }
+}
+
+.back {
+    //background-image: url('ss');
+}
+
+#container {
+    -webkit-box-shadow: #000 0 0 10px;
+    -moz-box-shadow: #000 0 0 10px;
+    box-shadow: #000 0 0 10px;
+    overflow: hidden;
+    margin: 50px auto;
+    width: 80%;
+    background-color: $white;
+    .titleBar {
+        border-bottom: 1px solid #000;
+        @include center;
+        .title {
+            line-height: 40px;
+            font-size: 30px;
+            text-align: center;
+        }
+        .description {
+            padding: 5px;
+            font-size: 14px;
+            text-align: center;
+            color: #727655;
+        }
+    }
+    .content {
+        @include center;
+        .question {
+            overflow: hidden;
+            margin: 5px 10px;
+            .leftContent {
+                width: 50%;
+                float: left;
+                .index {
+                    margin-right: 10px;
+                }
+                .options {
+                    padding-left: 30px;
+                    font-size: 14px;
+                }
+            }
+            .rightContent {
+                margin-left: 50%;
+                width: 50%;
+                min-height: 150px;
+            }
+        }
+    }
+    .footer {
+        @include center;
+        border-top: 1px solid #000;
+        height: 80px;
+        .backBtn {
+            display: block;
+            margin: 10px auto;
+            width: 60px;
+            line-height: 30px;
+            text-align: center;
+            background-color: $mainColor;
+            color: $white;
+            border-radius: 5px;
+        }
+    }
+}
